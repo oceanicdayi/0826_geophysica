@@ -152,7 +152,7 @@ The RMT mechanism (Lee et al. 2014) places the P axis (azimuth 293°, plunge 1°
 
 ## 6. Cross-Event Comparison
 
-To test whether the offshore bias is event-specific, we recomputed all metrics for three further Taiwan events with complete report archives, using each event's own analyst P-file as reference.
+To test whether the offshore bias is event-specific, we recomputed all metrics for three further Taiwan events with complete report archives, using each event's own analyst P-file as reference and identical code, so that catalogue convention cannot explain the contrast (Table 5). Besides the Taitung 2026 offshore $M_L$ 5.85 shock (nearest station 14.1 km; 83 solutions), the set comprises the deep offshore Yilan 2025 $M_L$ 7.01 event (67.7 km depth; nearest station 15.8 km; 104 solutions), the near-coast Hualien 2026a $M_L$ 5.74 event (nearest station 5.0 km; 81 solutions) and the inland Hualien 2026b $M_L$ 5.01 event (nearest station 5.2 km; 67 solutions). First public alert is the earliest `sent` timestamp among the three channels. For Taitung and Yilan all channels dispatched simultaneously; for Hualien 2026b the school channel led at 8.26 s and PWS followed at 17.26 s. The comparison is a case-controlled contrast of two sources outside the network against two at its edge or inside it.
 
 | | **Taitung 2026** | **Yilan 2025** | Hualien 2026a | Hualien 2026b |
 | --- | ---: | ---: | ---: | ---: |
@@ -173,19 +173,13 @@ To test whether the offshore bias is event-specific, we recomputed all metrics f
 
 **Table 5.** Cross-event comparison. All reference parameters are read from each event's analyst-reviewed P-file; all metrics are recomputed with identical code. "First public alert" is the earliest `sent` timestamp among the three channels; for the Taitung and Yilan events all channels dispatched simultaneously, whereas for Hualien 2026b the school channel led (8.26 s) and the PWS message followed at 17.26 s.
 
-Three patterns emerge (Fig. 12):
-
-1. **The magnitude bias is a property of offshore geometry, not of the system.** Both offshore events over-estimate among well-located solutions (+0.38, +0.45); both near-coast events, whose nearest station is 5 km away, are unbiased (−0.08, −0.07). The discriminating variable is the distance to the nearest station, i.e. whether the source is inside or outside the network.
-2. **The mislocation–magnitude compensation is specific to offshore sources.** Only the offshore events show negative correlation between epicentral error and reported magnitude, because their mislocations are systematically directed *toward* the network. Inland events, whose mislocations are unsystematic, show weak positive correlations.
-3. **Offshore geometry costs 4–6 s of alert latency**, consistently: 12.5–14.1 s for the two offshore events versus 7.9–8.0 s for the two near-coast events.
+Three patterns emerge (Fig. 12). The magnitude bias is a property of offshore geometry, not of the system. Both offshore events over-estimate among well-located solutions ($+0.38\pm0.17$ and $+0.45\pm0.14$); both near-coast events, whose nearest station is about 5 km away, are unbiased ($-0.08\pm0.17$ and $-0.07\pm0.16$). The discriminating variable is the distance to the nearest station, that is, whether the source lies inside or outside the network (Fig. 12a). Yilan is deep and larger than Taitung, yet the over-estimate has the same sign. The mislocation–magnitude compensation is likewise specific to offshore sources. Only Taitung and Yilan show negative correlation between epicentral error and reported magnitude ($r=-0.74$ and $-0.55$), because their mislocations are systematically directed toward the network. The two Hualien events, whose mislocations are unsystematic, show weak positive correlations ($r=+0.23$ and $+0.46$; Fig. 12c). First-report intensity within $\pm1$ is 59.0% for Taitung against 88.1, 92.6 and 92.4% for the other three events, consistent with the larger first-alert over-estimate of the Taitung case.
 
 ![Figure 12](../figures/manuscript/fig12.png)
 
 **Figure 12.** Cross-event comparison. (a) Magnitude bias of well-located solutions versus the distance to the nearest station. (b) First internal solution and first public alert latency. (c) Correlation between epicentral error and reported magnitude. (d) Magnitude bias versus latency for well-located solutions only.
 
-We emphasise that four events cannot establish a population statistic; the comparison is a case-controlled contrast (two offshore, two near-coast) designed to test whether the mechanism identified for the Taitung event generalises within Taiwan's own operational record.
-
----
+Offshore geometry also costs 4–6 s of alert latency, consistently: first internal solutions at 12.5–14.1 s and first public alerts at 13.7 s for the two offshore events, versus 7.9–8.0 s internal and 8.3 s public for the two near-coast events (Fig. 12b). Stations warned before intensity 3 remain high for Taitung, Yilan and Hualien 2026a (92.5, 82.6 and 92.5%), whereas Hualien 2026b falls to 64.2% because that smaller inland shock produced a smaller intensity-3 footprint. Four events cannot establish a population statistic; the design is a case-controlled contrast intended to test whether the Taitung mechanism generalises within Taiwan's own operational record. It does so at the level of sign and of latency, not of a transferable numerical correction: the two offshore residuals differ, Yilan is much deeper than Taitung, and the near-coast pair is unbiased despite sharing the same processing system. A larger offshore sample would be required before an operational correction of $-0.3$ to $-0.4$ is deployed.
 
 ## 7. Discussion
 
