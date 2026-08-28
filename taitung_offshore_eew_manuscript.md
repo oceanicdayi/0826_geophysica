@@ -56,17 +56,11 @@ Far-field P- and S-wave radiation coefficients $F_P$, $F_{SV}$ and $F_{SH}$ are 
 
 ## 4. The 25 August 2026 Taitung Offshore Earthquake
 
-### 4.1 Event and Observed Shaking
-
-The earthquake occurred at 15:00:11.33 local time (07:00:11.33 UTC) 48 km east-southeast of Taitung City at 13.1 km depth, with $M_L$ 5.85. It is a reverse-faulting event with a small strike-slip component (strike 182°, dip 50°, rake 60°); the P axis is nearly horizontal at azimuth 293°, consistent with the regional convergence direction. The nearest station, on Green Island (LDU, 14.1 km), recorded 150.1 gal and intensity 4 — the largest ground motion of the event. Of the 166 analyst-reviewed stations, 6 reached intensity 4, 13 reached intensity 3, and the remainder were at intensity 2 or below.
+The earthquake occurred at 15:00:11.33 local time (07:00:11.33 UTC) 48 km east-southeast of Taitung City at 13.1 km depth, with $M_L$ 5.85. It is reverse-faulting with a small strike-slip component (strike 182°, dip 50°, rake 60°; Lee et al. 2014), the P axis nearly horizontal at azimuth 293°. The nearest station, on Green Island (LDU, 14.1 km), recorded 150.1 gal and intensity 4, the largest ground motion of the event. Of the 166 analyst-reviewed stations, 6 reached intensity 4, 13 reached intensity 3, and the rest intensity 2 or below. All three channels issued their first message at 07:00:25 UTC, 13.67 s after origin time; the first internal solution was available at 12.52 s. PWS covered 17 counties, television 11, and the school channel 12 at predicted intensity $\geq 3$, with three later updates (Fig. 2, Table 1). Fifteen counties eventually recorded intensity 3 or above, so PWS coverage exceeded the observed footprint: the alert was conservative rather than under-inclusive (Fig. 3).
 
 ![Figure 2](../figures/manuscript/fig02.png)
 
 **Figure 2.** PWS coverage of the first alert (17 counties, shaded) with the epicentre (star) and dashed circles showing the S-wave response-time contours at 10 s intervals from the alert instant. The 0 s contour marks the theoretical blind zone boundary.
-
-### 4.2 Alert Timeline and Coverage
-
-All three channels issued their first message at 07:00:25 UTC, i.e. **13.67 s after the origin time**. The first internal solution was available at 12.52 s. The school channel then issued three updates at 14.67 s, 14.67 s and 17.67 s.
 
 | Channel | Messages | First alert (s) | Coverage |
 | --- | ---: | ---: | --- |
@@ -76,15 +70,11 @@ All three channels issued their first message at 07:00:25 UTC, i.e. **13.67 s af
 
 **Table 1.** Dissemination summary. The three channels dispatched simultaneously; the entire alert delay is therefore upstream of the publication pipeline.
 
-Fifteen counties eventually recorded intensity 3 or above. PWS coverage (17) therefore exceeded the observed footprint (15): the alert was conservative rather than under-inclusive.
-
 ![Figure 3](../figures/manuscript/fig03.png)
 
 **Figure 3.** Cumulative number of alerted counties for the three channels compared with the observed cumulative count of counties first exceeding intensity 3 (per-second intensity data). All channels reach their final coverage at 13.7 s, whereas the observed footprint grows until about 65 s. The first county exceeded intensity 3 at about 4 s, before any alert was issued.
 
-### 4.3 Source-Parameter Convergence
-
-Eighty-three solutions were produced by six streams within 40 s. Location convergence was rapid for the Geiger streams and poor for the geometric-centre streams: `192_gei` was within 4.6 km of the reference in its first solution at 12.5 s, whereas `192_f43` placed the epicentre 35.4 km inland and never recovered (final error 36.1 km). Final errors for the four converging streams were 0.8–1.9 km.
+Eighty-three solutions were produced by six streams within 40 s. Location convergence was rapid for the Geiger streams and poor for the geometric-centre streams: one Geiger stream was within 4.6 km of the reference in its first solution at 12.5 s, whereas a geometric-centre stream placed the epicentre 35.4 km inland and never recovered (final error 36.1 km). Final errors for the four converging streams were 0.8–1.9 km. Magnitude stabilised at 6.1–6.4 against the reference 5.85; depth remained at the 10/20/30 km grid nodes (Figs. 4, 5). Compared with the 166 analyst-reviewed observations, the first school report ($M$ 6.6 at 30 km) was exact at 10.2% of stations and within $\pm 1$ intensity rank at 59.0%; later reports reached 80.7% within $\pm 1$ (Table 2). First-report residuals are entirely non-negative: no station was under-warned, and most were over-warned by one to two ranks (Fig. 6). Accuracy improved with each update, but the message that reached the public was the least accurate one.
 
 ![Figure 4](../figures/manuscript/fig04.png)
 
@@ -93,10 +83,6 @@ Eighty-three solutions were produced by six streams within 40 s. Location conver
 ![Figure 5](../figures/manuscript/fig05.png)
 
 **Figure 5.** Evolution of (a) magnitude, (b) horizontal location error, (c) depth and (d) station count versus latency for the six streams. Magnitude stabilises at 6.1–6.4 against the reference 5.85; depth remains at the 10/20/30 km grid nodes.
-
-### 4.4 Intensity Prediction
-
-Predicted intensities from each school message were compared with the 166 analyst-reviewed observations.
 
 | Report | Magnitude / depth | Exact (%) | Within ±1 (%) |
 | --- | --- | ---: | ---: |
@@ -107,25 +93,15 @@ Predicted intensities from each school message were compared with the 166 analys
 
 **Table 2.** Intensity prediction accuracy per school-channel report (166 compared stations).
 
-The residual distribution of the first report is entirely non-negative: **no station was under-warned, and most were over-warned by one to two intensity ranks** (Fig. 6). Accuracy improved monotonically with each update, but the message that reached the public was the least accurate one.
-
 ![Figure 6](../figures/manuscript/fig06.png)
 
 **Figure 6.** Intensity residual (predicted minus observed) distributions for the first and second reports. The first report is entirely non-negative.
 
-### 4.5 Response Timeliness and the Blind Zone
-
-Using the per-second observed intensity of 626 stations, the first issued solution preceded the S-wave arrival at 99.0% of stations (median lead 33.6 s) and preceded the crossing of intensity 3 at **92.5%** of the stations that eventually reached intensity 3 (median lead 29.1 s).
-
-The exception is the near-source zone. Taitung City, 48.7 km from the epicentre, had a theoretical lead time of only 2.1 s relative to the 13.67 s alert; Green Island and the Taitung coast exceeded intensity 4–5 within 4–13 s, i.e. before the alert was issued (Fig. 7). Because the population within the blind zone is small, the practical impact was limited, but the geometry is intrinsic: for an offshore source the closest exposed community is also the least protected.
+Using the per-second observed intensity of 626 stations, the first issued solution preceded the S-wave arrival at 99.0% of stations (median lead 33.6 s) and preceded the crossing of intensity 3 at 92.5% of stations that eventually reached intensity 3 (median lead 29.1 s). Taitung City, 48.7 km from the epicentre, had a theoretical lead of only 2.1 s relative to the 13.67 s alert; Green Island and the Taitung coast exceeded intensity 4–5 within 4–13 s, before the alert was issued (Fig. 7). The blind-zone population is small, but the geometry is intrinsic: for an offshore source the closest exposed community is also the least protected. The disseminated solution reported $M_{Pd}$ 6.58; the same report contained $M_{tc}$ 7.63 and $M_{all}$ 7.10. Because CWA disseminates $M_{Pd}$, the public alert was $M$ 6.6 rather than $M$ 7.1. $M_{tc}$ reached 8.5 in three early solutions, confirming the operational value of restricting dissemination to the more stable amplitude-based magnitude in the first seconds.
 
 ![Figure 7](../figures/manuscript/fig07.png)
 
 **Figure 7.** Per-second maximum observed intensity by latitude band, with the alert times superimposed. Intensity 5 is reached in the 22.6°N band within about 4 s, well before the first alert at 13.7 s.
-
-### 4.6 A Favourable Design Choice
-
-The disseminated solution reported $M_{Pd}$ 6.58, but the same report also contained $M_{tc}$ 7.63 and the combined $M_{all}$ 7.10. Because CWA disseminates $M_{Pd}$, the public alert was $M$ 6.6 rather than $M$ 7.1. $M_{tc}$ reached 8.5 in three early solutions of this event. This confirms the operational value of restricting dissemination to the more stable amplitude-based magnitude during the first seconds.
 
 ---
 
