@@ -189,55 +189,21 @@ We emphasise that four events cannot establish a population statistic; the compa
 
 ## 7. Discussion
 
-### 7.1 Why Offshore Geometry Biases $Pd$ Magnitude
+The three bias terms act together offshore and in different directions inland. Offshore mislocation is systematically toward the land network, so it lowers the assumed distance and therefore the magnitude; any location improvement then raises the magnitude. Inland mislocations have no preferred direction, so the distance term averages out (Table 5). The earliest offshore stations occupy one sector of the focal sphere, and whether the magnitude is biased high or low is set by where that sector falls on the radiation pattern. Here it fell on the P-axis lobe ($+0.29$); a nodal sample (azimuth 210°, $|F_P|=0.01$) would have under-estimated, with a risk of missed warning. The persistent $+0.42$ for Taitung and $+0.45$ for Yilan indicates that the operational $Pd$ scaling, calibrated mainly on inland paths, over-predicts for offshore paths. The sign of the initial bias is not universal: the near-coast events start below the reference and rise toward it, whereas Taitung starts above and falls toward a biased plateau (Fig. 12d).
 
-The three terms measured here act in the same direction for an offshore source and in different directions for an inland source:
-
-- **Distance term.** Offshore mislocation is systematically toward the land network, so it lowers the assumed distance and therefore the magnitude. Any location improvement raises the magnitude. Inland mislocations have no preferred direction, so this term averages out (Table 5, row $r$).
-- **Azimuthal-sampling term.** For an offshore source, the earliest triggering stations necessarily occupy one sector of the focal sphere. Whether the resulting magnitude is biased high or low is then set by where that sector falls on the radiation pattern. Here it fell on the P-axis lobe (+0.29). Had the same geometry sampled a nodal direction — azimuth 210° has $|F_P|=0.01$ in this mechanism — the first magnitude would have been strongly **under**-estimated, with a corresponding risk of missed warning.
-- **Relation term.** The persistent +0.42 for the Taitung event and +0.45 for the Yilan event indicates that the operational $Pd$ scaling, calibrated principally on inland paths, over-predicts magnitude for offshore paths. Whether this reflects path attenuation, near-source station siting or the depth/distance range of the calibration data set cannot be resolved from four events.
-
-An important corollary is that the sign of the initial bias is not universal: the two near-coast events start below the reference and rise toward it, whereas the Taitung event starts above and falls toward a biased plateau (Fig. 12d). Bias direction is a geometric accident of which stations trigger first.
-
-### 7.2 Magnitude Error Is Not a Valid Quality Metric
-
-This is the most immediately transferable finding. In the Taitung event, the absolute magnitude error of the *poorly located* solutions (mean 0.21) was **smaller** than that of the *well located* solutions (0.38), purely because distance under-estimation cancelled the relation bias. A verification procedure that ranks solutions by magnitude error alone would therefore select the worst solutions. Operational verification must evaluate location error and magnitude error jointly; we recommend reporting them as a pair for every solution.
-
-### 7.3 Azimuthal Gap Is Not a Reliable Quality Indicator Offshore
-
-Azimuthal gap is widely used as a solution-quality flag. For sources outside the network it can be actively misleading: a correct offshore solution necessarily has a large gap (the minimum achieved in this event was 100°), whereas an incorrect solution placed inside the network acquires a small gap. In our data the six smallest-gap solutions were the six worst-located ones. Gap should be interpreted jointly with whether the epicentre lies inside or outside the station polygon, and should not be used alone as a promotion criterion.
-
-### 7.4 Transferable Operational Recommendations
+Magnitude error alone is not a valid quality metric. In the Taitung event the absolute magnitude error of the poorly located solutions (mean 0.21) was smaller than that of the well located solutions (0.38), because distance under-estimation cancelled the relation bias. Ranking by magnitude error would therefore select the worst solutions; location and magnitude error must be reported as a pair. Azimuthal gap is similarly misleading offshore: a correct offshore solution necessarily has a large gap (minimum 100° here), whereas an incorrect inland placement acquires a small gap, and the six smallest-gap solutions were the six worst-located. Operators should apply an offshore-specific magnitude correction (here $-0.3$ to $-0.4$), require a minimum magnitude-station count and azimuthal spread before public dissemination, detect $Pd$ integration failures at near-source high-gain stations in real time, and use cross-stream location consistency rather than gap as the promotion gate. Preferring $Pd$ over $\tau_c$ in the first seconds, and a median of station magnitudes, further limits early outliers.
 
 | Priority | Recommendation | Evidence |
 | --- | --- | --- |
-| High | Apply an offshore-specific magnitude correction (here −0.3 to −0.4), validated on additional events before deployment | +0.38 and +0.45 residual bias in two offshore events at the best achievable geometry |
+| High | Apply an offshore-specific magnitude correction (here $-0.3$ to $-0.4$), validated on additional events before deployment | $+0.38$ and $+0.45$ residual bias in two offshore events at the best achievable geometry |
 | High | Require a minimum magnitude-station count and azimuthal spread (e.g. $n_m\geq5$ spanning ≥ 2 quadrants) before promoting a magnitude to public dissemination | $n_m\leq4$ solutions have $\Delta M$ scatter 0.41 versus 0.23 for $n_m\geq5$; first alert used $n_m=3$ within a 12° sector |
 | High | Detect and repair $Pd$ integration/saturation failures at near-source high-gain stations in real time | LDU recorded 162 gal but returned $Pd$ = 0.0006 cm, removing the only near-source constraint |
-| Medium | Use cross-stream location consistency (e.g. two independent streams within 15 km) as the promotion gate instead of gap | At 07:00:24 the two streams of computer 192 differed by 35 km, a detectable inconsistency |
-| Medium | Report location error and magnitude error jointly in verification | Section 7.2 |
+| Medium | Use cross-stream location consistency (e.g. two independent streams within 15 km) as the promotion gate instead of gap | At 07:00:24 two streams on the same computer differed by 35 km, a detectable inconsistency |
+| Medium | Report location error and magnitude error jointly in verification | Poorly located solutions had smaller magnitude error than well-located ones |
 | Medium | Prefer the amplitude-based magnitude over $\tau_c$-based or combined magnitudes in the first seconds | $M_{tc}$ reached 8.5; $M_{all}$ would have produced $M$ 7.1 instead of $M$ 6.6 |
 | Medium | Use median or trimmed-mean station magnitude rather than the mean of a few stations | With three stations, a single 0.5-unit outlier shifts the event magnitude by 0.17 |
 
-Where a focal mechanism becomes available within seconds — as is increasingly feasible for moderate events near dense networks — weighting station magnitudes by the theoretical radiation coefficient would remove the sampling term directly. In its absence, azimuthal spread requirements achieve much of the same effect, because the four-lobed radiation pattern averages out over quadrants.
-
-### 7.5 What Worked
-
-Three aspects of the CWA implementation performed well and are worth documenting for other operators:
-
-1. **Parallel heterogeneous streams.** The geometric-centre streams provided immediate solutions; the Geiger streams provided the only accurate offshore location. Running both, and promoting from whichever satisfies quality gates, is a robust design for source regions where one method systematically fails.
-2. **Simultaneous multi-channel dispatch.** PWS, television and school alerts left the system in the same second, so no channel-specific delay was incurred; the entire 13.67 s was source-estimation time.
-3. **Conservative coverage.** PWS reached 17 counties against an observed intensity-3 footprint of 15. The over-estimate produced over-alerting rather than missed alerting — the preferable failure direction, although repeated over-alerting carries its own long-term cost in public credibility.
-
-### 7.6 Limitations
-
-1. The mechanism analysis rests on a single event with a single focal mechanism; the radiation-pattern control is demonstrated for this geometry, not proven as a general rule.
-2. Azimuths between 45° and 180° contain no stations, so a directivity lobe pointing east-southeast could not be detected. Our statement is that no directivity signal is required to explain the observations within the sampled azimuth range.
-3. Site response is not modelled separately; the residual rms of 0.277 after the radiation-pattern correction certainly contains site and path terms.
-4. Four events are too few for a population statistic. The consistent contrast between two offshore and two near-coast events is suggestive, not conclusive.
-5. The recovered $Pd$ relation describes the operational implementation of one system; the coefficients should not be transferred to other systems.
-
----
+Three aspects of the CWA implementation performed well. Parallel geometric-centre and Geiger streams supplied both immediate solutions and the only accurate offshore locations; simultaneous PWS, television and school dispatch meant that the entire 13.67 s was source-estimation time; and PWS coverage of 17 counties against an observed intensity-3 footprint of 15 produced over-alerting rather than missed alerting, the preferable failure direction, although repeated over-alerting carries a long-term cost in public credibility. The mechanism analysis nevertheless rests on a single event and a single focal mechanism; azimuths between 45° and 180° contain no stations, so an east-southeast directivity lobe could not be detected; site response is not modelled separately; four events cannot establish a population statistic; and the recovered $Pd$ coefficients describe this operational implementation only. Where a mechanism is available within seconds, weighting station magnitudes by the theoretical radiation coefficient would remove the sampling term directly; otherwise azimuthal-spread requirements achieve much of the same effect, because the four-lobed pattern averages out over quadrants.
 
 ## 8. Conclusions
 
