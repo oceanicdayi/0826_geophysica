@@ -36,37 +36,11 @@ This paper closes that gap using the complete operational record of a moderate o
 
 ## 2. System and Data
 
-### 2.1 The CWA Real-Time Seismic Network
+The Central Weather Administration (CWA) real-time seismic network is a mixed-sensor system that combines velocity and acceleration instruments in surface, borehole and ocean-bottom installations. Velocity sensors provide the sensitivity to weak early P-wave motion that is decisive for offshore sources; accelerometers preserve waveform fidelity under strong shaking without clipping. Data are digitised at 24 bit, packetised at 1 s, and delivered with a typical end-to-end latency of 0.5–2 s. Real-time processing runs within the Earthworm framework (Johnson et al. 1995). By 2025 the national inventory comprised 603 accelerometers, 179 velocity stations and 9 ocean-bottom stations. The operational instance analysed here was configured with 551 strong-motion and 228 velocity/broadband stations inside the map area of Figure 1. Their distribution is dense across the island but, as that figure shows, provides no coverage seaward of the east coast, so the epicentral region itself is unsampled. Every offshore hypocentre must therefore be located and sized from a one-sided, landward sampling of the wavefield.
 
-The CWA real-time network is a mixed-sensor system combining velocity and acceleration instruments in surface, borehole and ocean-bottom installations. Velocity sensors provide sensitivity to weak early P-wave motion, which is decisive for offshore sources; accelerometers preserve waveform fidelity under strong shaking without clipping. Data are digitised at 24 bit, packetised at 1 s, and delivered with typical end-to-end latency of 0.5–2 s. Real-time processing runs within the Earthworm framework (Johnson et al. 1995). By 2025 the network comprised 603 accelerometers, 179 velocity stations and 9 ocean-bottom stations. The instance analysed here was configured with 551 strong-motion and 228 velocity/broadband stations inside the map area of Figure 1; their distribution is dense on the island but, as that figure shows, provides no coverage seaward of the east coast.
+The earthworm-Based Earthquake Alarm Reporting (eBEAR) system (Chen et al. 2015) runs as multiple parallel instances that share the same real-time data feed but differ in association parameters and location algorithm. Two location families operate simultaneously: the effective-epicentre (geometric-centre) method (`f42`, `f43`), which returns the centroid of triggered stations with depth fixed at 10 km and is immediate and robust against non-convergence (Chen et al. 2019); and the Geiger inversion method (`gei`), which solves for the hypocentre iteratively and can resolve depth but requires a usable station geometry. For this event, six streams ran in parallel on four computers: `192_f43`, `192_gei`, `230_f42`, `230_gei`, `231_gei` and `236_gei`. Each stream writes one report file (`.rep`) per solution, listing source parameters, station counts $n$ and $n_m$, azimuthal gap, and a per-station table of $Pa$, $Pv$, $Pd$, $M_{Pd}$ and assumed distance $R$, so that the operational magnitude is fully auditable at station level (Section 5). Three magnitudes are computed ($M_{Pd}$, $M_{tc}$ and $M_{all}$); **the disseminated magnitude is $M_{Pd}$**.
 
-### 2.2 eBEAR Architecture and Parallel Streams
-
-The earthworm-Based Earthquake Alarm Reporting (eBEAR) system (Chen et al. 2015) runs as multiple parallel instances that share the same real-time data feed but differ in association parameters and location algorithm. Two location families operate simultaneously:
-
-- the **effective-epicentre (geometric-centre) method** (`f42`, `f43`), which returns the centroid of triggered stations with depth fixed at 10 km, is immediate and robust against non-convergence (Chen et al. 2019);
-- the **Geiger inversion method** (`gei`), which solves for the hypocentre iteratively and can resolve depth but requires a usable station geometry.
-
-For the event analysed here, six streams ran in parallel on four computers: `192_f43`, `192_gei`, `230_f42`, `230_gei`, `231_gei` and `236_gei`. Each stream writes one report file (`.rep`) per solution, containing the source parameters, the number of triggered stations $n$, the number of stations used for magnitude $n_m$, the azimuthal gap, and a per-station table of $Pa$, $Pv$, $Pd$, single-station magnitude $M_{Pd}$ and assumed hypocentral distance $R$. This makes the operational magnitude fully auditable at station level, which is the basis of the analysis in Section 5.
-
-Three magnitudes are computed: $M_{Pd}$ from peak initial displacement, $M_{tc}$ from the characteristic period $\tau_c$, and a combined $M_{all}$. **The disseminated magnitude is $M_{Pd}$.**
-
-### 2.3 Dissemination Channels
-
-Alerts are distributed through three independent channels with different thresholds: (i) the Public Warning System (PWS) cell-broadcast, nominally for $M\geq5.0$ and predicted intensity $\geq3$ (Taipei $\geq2$); (ii) a television channel (CAP), nominally $M\geq5.0$ and predicted intensity $\geq2$; and (iii) a school channel (XML via a dedicated network), nominally $M\geq4.5$ and predicted intensity $\geq2$. The school channel transmits successive updates, whereas PWS and TV normally issue a single message per event.
-
-### 2.4 Data Used
-
-| Data set | Content | Use |
-| --- | --- | --- |
-| eBEAR report files | 83 solutions from 6 streams, including 2065 single-station records | Source convergence, magnitude decomposition |
-| Analyst-reviewed P-file (`.sdp`) | 290 phases, 166 stations with observed intensity and PGA, azimuth and take-off angle per station | Reference solution, radiation-pattern test |
-| Issue-sequence log | The subset of solutions promoted to dissemination | Alert timing |
-| CAP / XML alert files | 1 PWS, 1 TV, 4 school messages | Dissemination performance, coverage |
-| Per-second intensity JSON | 626 stations, 120 s, 1 s sampling | Response timeliness, blind-zone analysis |
-| Focal mechanism | strike 182°, dip 50°, rake 60° | Radiation-pattern test |
-
-Three additional archived events (Section 6) provide the comparison baseline. For every event, reference hypocentre and magnitude are read directly from that event's analyst-reviewed P-file header so that all events are treated identically.
+Alerts are distributed through three independent channels with different thresholds: (i) the Public Warning System (PWS) cell-broadcast, nominally for $M\geq5.0$ and predicted intensity $\geq3$ (Taipei $\geq2$); (ii) a television channel (CAP), nominally $M\geq5.0$ and predicted intensity $\geq2$; and (iii) a school channel (XML via a dedicated network), nominally $M\geq4.5$ and predicted intensity $\geq2$. The school channel transmits successive updates, whereas PWS and TV normally issue a single message per event. The analysis uses 83 eBEAR solutions (2065 single-station records), the analyst-reviewed P-file with 290 phases and 166 intensity/PGA stations, the issue-sequence log, CAP/XML alert files (1 PWS, 1 TV, 4 school), per-second intensity for 626 stations over 120 s, and the focal mechanism (strike 182°, dip 50°, rake 60°). These records underpin the source-convergence, magnitude, radiation-pattern, timing and coverage analyses that follow. Three additional archived events (Section 6) provide the comparison baseline. For every event, reference hypocentre and magnitude are read from that event's analyst-reviewed P-file header so that all events are treated identically.
 
 ---
 
