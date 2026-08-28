@@ -30,7 +30,7 @@ Taiwan is an instructive laboratory for this problem. The island sits at the con
 
 Most operational EEW magnitudes derive from the amplitude or period of the first few seconds of the P wave. The peak initial displacement $Pd$, measured over a fixed window of typically 3 s, scales with magnitude and distance and is widely used for real-time magnitude estimation (Wu and Kanamori 2005; Wu and Zhao 2006; Zollo et al. 2006). Three limitations are known: saturation when the window is shorter than the rupture duration (Trugman et al. 2019); strong sensitivity to the assumed hypocentral distance, because the distance-correction term is steep; and station-to-station scatter caused by site response and by the source radiation pattern. The last two interact destructively offshore. The earliest triggering stations occupy a narrow azimuth range, so the magnitude is averaged over a single sector of the focal sphere, while any epicentral error translates directly into a distance error and hence into a magnitude error. To our knowledge these two effects have not previously been separated and quantified in an operational record.
 
-This paper closes that gap using the complete operational record of a moderate offshore earthquake. We document the CWA response report by report, covering all six parallel processing streams and all three public dissemination channels; we decompose the first-alert magnitude bias into a location-distance term, an azimuthal-sampling term and an intrinsic relation term; and we test which physical mechanism controls the azimuthal term, using the focal mechanism of the event. We then ask whether the result generalises, by recomputing identical metrics for three further Taiwan earthquakes spanning offshore and near-coast geometries. The outcome is a set of transferable quality-control conclusions: two indicators in routine use, magnitude error and azimuthal gap, are shown to be invalid on their own for offshore sources, and alternatives based on magnitude-station azimuthal coverage and cross-stream location consistency are proposed. Section 2 describes the system and data, Section 3 the methods, Sections 4 to 6 the results, and Sections 7 and 8 the discussion and conclusions.
+This paper closes that gap using the complete operational record of a moderate offshore earthquake. We document the CWA response report by report, covering all six parallel processing streams and all three public dissemination channels; we decompose the first-alert magnitude bias into a location-distance term, an azimuthal-sampling term and an intrinsic relation term; and we test which physical mechanism controls the azimuthal term, using the focal mechanism of the event. We then ask whether the result generalises, by recomputing identical metrics for three further Taiwan earthquakes spanning offshore and near-coast geometries. The outcome is a set of transferable quality-control conclusions: two indicators in routine use, magnitude error and azimuthal gap, are shown to be invalid on their own for offshore sources, and alternatives based on magnitude-station azimuthal coverage and cross-stream location consistency are proposed. Section 2 describes the system and data, Section 3 the evaluation metrics and analysis protocol, Sections 4 to 6 the results, and Sections 7 and 8 the discussion and conclusions.
 
 ---
 
@@ -44,41 +44,13 @@ Alerts are distributed through three independent channels with different thresho
 
 ---
 
-## 3. Methods
+## 3. Evaluation Metrics and Analysis Protocol
 
-### 3.1 Reference Solution and Metric Definitions
+The reference (ground truth) is the CWA analyst-reviewed solution. For the Taitung event this is 2026-08-25 07:00:11.33 UTC, 22.6252°N, 121.5968°E, depth 13.05 km, $M_L$ 5.85, based on 290 phases (azimuthal gap 105°, rms 0.11 s, quality grade B) and matching CWA catalogue report No. 115057. Latency of a solution is its reporting time minus the reference origin time. Alert latency is the `sent` timestamp in the CAP or XML product minus that origin time: the instant the product left the warning system, excluding downstream cell-broadcast delivery, which is not recorded here. All events are measured identically, so cross-event comparisons are internally consistent. Epicentral error is the horizontal distance between the solution and the reference epicentre, and magnitude bias is $\Delta M = M_{Pd} - M_L^{\mathrm{ref}}$. A well-located solution has epicentral error below 10 km; the converged value is the median of the last three well-located solutions; the geometry penalty is the earliest well-located magnitude minus that converged value.
 
-The reference (ground truth) is the CWA analyst-reviewed solution. For the Taitung event this is 2026-08-25 07:00:11.33 UTC, 22.6252°N, 121.5968°E, depth 13.05 km, $M_L$ 5.85, based on 290 phases with azimuthal gap 105°, rms 0.11 s and quality grade B; it agrees with the published CWA catalogue entry (report No. 115057; $M$ 5.8, 48.0 km east-southeast of Taitung).
+Because each report lists $Pd$, assumed hypocentral distance $R$ and single-station $M_{Pd}$, the operational magnitude is fully specified at station level and can be recovered by least squares over all 2065 single-station records of the event: $M_{Pd} = 4.79 + 1.16\,\log_{10}(Pd) + 1.85\,\log_{10}(R)$, with $Pd$ in cm, $R$ in km and rms 0.13. Predicted and reported values lie on the 1:1 line (Fig. 8d), confirming that reported magnitude is a deterministic function of $Pd$ and assumed distance, not an independent estimate. The coefficient 1.85 on $\log_{10}R$ is steep: a factor-of-two error in assumed distance produces 0.56 magnitude units of error, so any offshore mislocation toward the land network maps directly into a magnitude bias. Event magnitude is the mean of the station values used in each report; therefore two solutions computed from identical $Pd$ amplitudes can differ only through their assumed distances. The recovered relation is used only as a diagnostic description of this operational implementation, not as a proposed new scaling law.
 
-We define:
-
-- **latency** of a solution = its reporting time minus the reference origin time;
-- **alert latency** = the `sent` timestamp written in the CAP or XML alert product minus the reference origin time. This is the instant at which the product left the warning system; it excludes downstream carrier delivery time for cell broadcast, which is not recorded in the products analysed here. All events in this study are measured identically, so cross-event comparisons are internally consistent;
-- **epicentral error** = horizontal distance between the solution and the reference epicentre;
-- **magnitude bias** $\Delta M = M_{Pd} - M_L^{\mathrm{ref}}$;
-- **well-located solution** = epicentral error < 10 km;
-- **converged value** = median of the last three well-located solutions of the event;
-- **geometry penalty** = magnitude of the earliest well-located solution minus the converged magnitude.
-
-### 3.2 Recovering the Operational Magnitude Relation
-
-Because each report lists $Pd$, $R$ and $M_{Pd}$ per station, the operational relation can be recovered by least squares over all 2065 single-station records of the event:
-
-$$M_{Pd} = 4.79 + 1.16\,\log_{10}(Pd) + 1.85\,\log_{10}(R), \qquad \mathrm{rms}=0.13$$
-
-with $Pd$ in cm and $R$ in km. Predicted and reported values lie on the 1:1 line (Fig. 8d), confirming that the operational magnitude is a deterministic function of $Pd$ and assumed distance. The coefficient 1.85 on $\log_{10}R$ implies that a factor-of-two error in assumed distance produces 0.56 magnitude units of error. This relation is used only as a diagnostic description of the operational system, not as a proposed new scaling law.
-
-### 3.3 Radiation-Pattern Computation
-
-Far-field P- and S-wave radiation coefficients $F_P$, $F_{SV}$, $F_{SH}$ are computed from the focal mechanism following Aki and Richards (2002, Box 4.4), with the take-off angle measured from the downward vertical. Take-off angles for the 166 analyst-reviewed stations are taken from the P-file (velocity-model values); for report-file stations they are interpolated from the P-file distance–take-off relation. Because observed amplitudes never vanish on nodal planes, $|F|$ is floored at 0.10 in regressions. We use $|F_S|=\sqrt{F_{SV}^2+F_{SH}^2}$ against observed PGA (S-wave dominated) and $|F_P|$ against $Pd$ (P-wave).
-
-### 3.4 Statistical Tests
-
-Coefficient uncertainties are estimated by bootstrap resampling (4000 iterations). Significance of an azimuthal or radiation term is assessed by permutation (4000 iterations), shuffling the association between stations and the tested predictor and comparing the resulting rms improvement (or azimuthal harmonic amplitude) with the observed value. Azimuthal structure is quantified by the amplitude of the best-fitting one-cycle harmonic, $y=a+b\cos\phi+c\sin\phi$, amplitude $\sqrt{b^2+c^2}$.
-
-### 3.5 Cross-Event Protocol
-
-Four events with complete report archives are compared (Section 6). For each, all metrics are recomputed from the raw report files and that event's own analyst P-file using identical code, so the comparison is not affected by differences in how individual events were catalogued.
+Far-field P- and S-wave radiation coefficients $F_P$, $F_{SV}$ and $F_{SH}$ are computed from the Real-time Moment Tensor (RMT) focal mechanism (Lee et al. 2014) following Aki and Richards (2002, Box 4.4), with take-off angle measured from the downward vertical. Take-off angles for the 166 analyst-reviewed stations come from the P-file; for report-file stations they are interpolated from the P-file distance–take-off relation. Because observed amplitudes never vanish on nodal planes, $|F|$ is floored at 0.10. We use $|F_S|=\sqrt{F_{SV}^2+F_{SH}^2}$ against PGA and $|F_P|$ against $Pd$. Coefficient uncertainties are estimated by bootstrap resampling (4000 iterations); significance of an azimuthal or radiation term is assessed by permutation (4000 iterations). Azimuthal structure is the amplitude $\sqrt{b^2+c^2}$ of the best-fitting one-cycle harmonic $y=a+b\cos\phi+c\sin\phi$. Four events with complete report archives are compared in Section 6: all metrics are recomputed from the raw report files and each event's own analyst P-file using identical code, so the offshore versus near-coast contrast is not affected by catalogue convention.
 
 ---
 
