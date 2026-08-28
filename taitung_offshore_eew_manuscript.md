@@ -26,7 +26,7 @@ Taiwan is an instructive laboratory for this problem. The island sits at the con
 
 ![Figure 1](../figures/manuscript/fig01.png)
 
-**Figure 1.** CWA real-time seismic network and the 25 August 2026 Taitung offshore earthquake. Grey circles: strong-motion stations; blue triangles: velocity/broadband stations, as configured in the eBEAR instance analysed here (551 and 228 stations respectively within the map area). Red star: the epicentre of the analysed event; the beachball, plotted offset and connected by a line to the epicentre, shows the Real-time Moment Tensor (RMT) focal mechanism used in Section 5.3 (strike 182°, dip 50°, rake 60°; Lee et al. 2014). Epicentres of the three comparison events of Section 6 are listed in Table 5.
+**Figure 1.** CWA real-time seismic network and the 25 August 2026 Taitung offshore earthquake. Grey circles: strong-motion stations; blue triangles: velocity/broadband stations, as configured in the eBEAR instance analysed here (551 and 228 stations respectively within the map area). Red star: the epicentre of the analysed event; the beachball, plotted offset and connected by a line to the epicentre, shows the Real-time Moment Tensor (RMT) focal mechanism used in Section 5 (strike 182°, dip 50°, rake 60°; Lee et al. 2014). Epicentres of the three comparison events of Section 6 are listed in Table 5.
 
 Most operational EEW magnitudes derive from the amplitude or period of the first few seconds of the P wave. The peak initial displacement $Pd$, measured over a fixed window of typically 3 s, scales with magnitude and distance and is widely used for real-time magnitude estimation (Wu and Kanamori 2005; Wu and Zhao 2006; Zollo et al. 2006). Three limitations are known: saturation when the window is shorter than the rupture duration (Trugman et al. 2019); strong sensitivity to the assumed hypocentral distance, because the distance-correction term is steep; and station-to-station scatter caused by site response and by the source radiation pattern. The last two interact destructively offshore. The earliest triggering stations occupy a narrow azimuth range, so the magnitude is averaged over a single sector of the focal sphere, while any epicentral error translates directly into a distance error and hence into a magnitude error. To our knowledge these two effects have not previously been separated and quantified in an operational record.
 
@@ -107,11 +107,9 @@ Using the per-second observed intensity of 626 stations, the first issued soluti
 
 ## 5. Magnitude Bias: Decomposition and Mechanism
 
-### 5.1 Reported Magnitude Is a Function of the Assumed Distance
+Reported magnitude tracks assumed distance. At 07:00:23.8 UTC two streams produced solutions in the same second from the same stations with identical $Pd$ values; their only difference was the assumed hypocentre (Table 3). The Geiger solution reported 6.55, the geometric-centre solution 5.66. The 0.89-unit difference equals $1.85\log_{10}(60/21)=0.84$ predicted by the operational relation. The solution that appeared accurate ($M$ 5.66 against $M_L$ 5.85) was the badly mislocated one (35.4 km error), while the correctly located solution (4.6 km error) over-estimated. Within a geometric-centre stream the same coupling appears: when it briefly converged to within 1.1 km, magnitude jumped from 5.46 to 6.42, then fell to 5.81 as the epicentre drifted inland. Over all 83 solutions, epicentral error and reported magnitude correlate at $r=-0.74$, with a slope of $-0.15$ units per 10 km of location error (Fig. 8). The regression crosses the reference magnitude at an epicentral error of about 30 km: the apparently most accurate magnitudes were produced by solutions mislocated by 30 km.
 
-The clearest evidence is an internal control experiment provided by the operational system itself. At 07:00:23.8 UTC, computer 192 produced two solutions in the same second, `192_gei` and `192_f43`, from the **same stations with identical $Pd$ values**. Their only difference was the assumed hypocentre.
-
-| Station | $Pd$ (cm) | `gei` $R$ (km) | `gei` $M_{Pd}$ | `f43` $R$ (km) | `f43` $M_{Pd}$ |
+| Station | $Pd$ (cm) | Geiger $R$ (km) | Geiger $M_{Pd}$ | Centroid $R$ (km) | Centroid $M_{Pd}$ |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | G035 | 0.06748 | 55 | 6.63 | 15 | 5.66 |
 | G036 | 0.06561 | 54 | 6.59 | 16 | 5.67 |
@@ -121,29 +119,17 @@ The clearest evidence is an internal control experiment provided by the operatio
 
 **Table 3.** Identical amplitudes, different assumed distances. The 0.89-unit difference equals $1.85\log_{10}(60/21)=0.84$ predicted by the operational relation.
 
-Critically, the solution that appeared *accurate* (`f43`, $M$ 5.66 against $M_L$ 5.85) was the badly mislocated one (35.4 km error), while the solution that was *correctly located* (`gei`, 4.6 km error) over-estimated. The same behaviour appears within a single stream: when `192_f43` briefly converged to within 1.1 km at its fourth solution, its magnitude jumped from 5.46 to 6.42, and fell back to 5.81 when the location drifted offshore-to-inland again.
-
-Over all 83 solutions, epicentral error and reported magnitude correlate at $r=-0.74$, with a slope of −0.15 magnitude units per 10 km of location error (Fig. 8c). The regression crosses the reference magnitude at an epicentral error of about 30 km: **for this event, the apparently most accurate magnitudes were produced by solutions mislocated by 30 km.**
-
 ![Figure 8](../figures/manuscript/fig08.png)
 
-**Figure 8.** Evidence that reported magnitude tracks assumed distance. (a) Two solutions computed in the same second from identical $Pd$ values. (b) Magnitude and location error report by report for stream `192_f43`. (c) All 83 solutions, $r=-0.74$. (d) Recovered operational relation, 2065 single-station records, rms 0.13.
+**Figure 8.** Evidence that reported magnitude tracks assumed distance. (a) Two solutions computed in the same second from identical $Pd$ values. (b) Magnitude and location error report by report for a geometric-centre stream. (c) All 83 solutions, $r=-0.74$. (d) Recovered operational relation, 2065 single-station records, rms 0.13.
 
-### 5.2 One-Sided Sampling and the Azimuthal-Gap Penalty
-
-The first disseminated solution used only three stations for magnitude ($n_m=3$) at azimuths 295–307° from the epicentre, i.e. within a 12° sector. The nearest station, LDU (14.1 km, azimuth 292°), was effectively unusable: it recorded $Pa$ = 162.3 gal and $Pv$ = 4.73 cm s⁻¹ but $Pd$ = 0.0006 cm, yielding a single-station magnitude of 3.46 — an integration or saturation failure at the one station that could have anchored the estimate downward.
-
-Grouping the 72 single-station magnitudes of the final, well-located solution by azimuth sector and distance band shows that magnitude estimates vary by 0.3–0.5 units between sectors at the same distance, and that the sector used by the first report (west-northwest, < 60 km) is the highest of all (median 6.54). Stations beyond 150 km yield 5.4–5.9, but they only join the solution after the eleventh report.
-
-Separating the 83 solutions by location accuracy shows that azimuthal gap itself is a weak predictor when the location is correct (slope +0.07 magnitude units per 100° of gap, $r=0.23$) and only matters at the extreme (> 300°, where $n_m\leq4$; mean bias +0.57). Among poorly located solutions the apparent correlation is strong ($r=0.76$) but spurious: **the six solutions with the smallest gaps (125–139°) are the six with the largest location errors (mean 41 km)**, because placing the epicentre inside the land network artificially improves its apparent azimuthal coverage.
+The first disseminated solution used only three magnitude stations at azimuths 295–307° from the epicentre, a 12° sector. The nearest station, LDU (14.1 km, azimuth 292°), recorded $Pa$ = 162.3 gal but $Pd$ = 0.0006 cm, yielding magnitude 3.46 — an integration or saturation failure at the one station that could have anchored the estimate downward. Among 72 single-station magnitudes of the final well-located solution, estimates vary by 0.3–0.5 units between sectors at the same distance; the west-northwest sector used by the first report ($<$ 60 km) is the highest (median 6.54). Stations beyond 150 km yield 5.4–5.9 but join only after the eleventh report. Azimuthal gap is a weak predictor when the location is correct ($r=0.23$) and only matters at the extreme ($>$ 300°, $n_m\leq4$). Among poorly located solutions the correlation is strong ($r=0.76$) but spurious: the six smallest-gap solutions (125–139°) are the six worst-located (mean 41 km), because an inland epicentre artificially improves apparent coverage (Fig. 9).
 
 ![Figure 9](../figures/manuscript/fig09.png)
 
 **Figure 9.** Azimuthal evidence. (a) Station azimuth coverage: no station exists between 45° and 180°; red lines mark the three stations that set the first magnitude. (b) Median single-station magnitude by azimuth sector and distance band. (c) Azimuth versus single-station magnitude residual for the final solution. (d) Direction of the strongest distance-corrected observed PGA per distance band.
 
-### 5.3 The Azimuthal Effect Is Controlled by the Radiation Pattern, Not by Directivity
-
-The focal mechanism resolves the mechanism question. The P axis (azimuth 293°, plunge 1°) points directly at the sector occupied by the first-report stations, and P-wave radiation maximises along the P and T axes. The theoretical radiation coefficients are:
+The RMT mechanism (Lee et al. 2014) places the P axis (azimuth 293°, plunge 1°) on the first-report stations. Their mean $|F_P|$ is 0.699 against an all-azimuth average of 0.392, a ratio of 1.78 that predicts $+0.29$ magnitude units (Table 4). Observed PGA follows the theoretical S-wave radiation pattern with exponent $+1.13$ (theoretical 1.0; $p<0.001$); after removing distance and radiation, the residual azimuthal harmonic is 0.028 ($p=0.92$), so no rupture-directivity signal remains (Fig. 10). The predicted $+0.29$ matches the $+0.28$ geometry penalty measured as a well-located Geiger stream improved from three magnitude stations to thirty-two. That stream reported 6.55 at first and converged to 6.30, not to the analyst $M_L$ 5.85. The first-alert budget is therefore $5.85 + 0.42$ ($Pd$ relation) $+ 0.28$ (one-sided sampling) $= 6.55$ (Fig. 11). The $+0.42$ residual persists at the best geometry the event achieved and is a property of the $Pd$ relation for this offshore path; improving the network cannot remove it, only calibration can.
 
 | Station | Azimuth | Take-off | $|F_P|$ |
 | --- | ---: | ---: | ---: |
@@ -156,31 +142,13 @@ The focal mechanism resolves the mechanism question. The P axis (azimuth 293°, 
 
 **Table 4.** The three stations that set the first magnitude sat on the maximum lobe of the P-wave radiation pattern. The ratio 0.699/0.392 = 1.78 predicts a magnitude bias of $1.16\log_{10}(1.78)=+0.29$.
 
-Three independent tests support the radiation-pattern interpretation:
-
-1. **Observed ground motion follows the radiation pattern.** Regressing $\log_{10}(\mathrm{PGA})$ of the 117 stations with non-zero PGA on $\log_{10}R$ and $\log_{10}|F_S|$ (using the P-file take-off angles) reduces the rms from 0.308 to 0.277 (10.2%), with a fitted exponent of $+1.13$ (bootstrap 95% CI 0.60–1.68), statistically indistinguishable from the theoretical value 1.0; permutation $p<0.001$. A mechanism-free azimuthal harmonic explains less (7.7%).
-2. **No directivity signal remains.** After removing distance and the radiation pattern, the residual azimuthal harmonic amplitude drops from 0.453 to 0.028 $\log_{10}$ units ($p=0.92$). Within the sampled azimuth range there is no detectable rupture-directivity contribution — as expected for an $M_L$ 5.85 rupture of about 4–5 km length and 2 s duration measured in a 3 s window.
-3. **The predicted bias matches the observed one.** The radiation-pattern prediction (+0.29) equals, within 0.01, the geometry penalty measured from the convergence of stream `192_gei` (+0.28; Section 5.4).
-
 ![Figure 10](../figures/manuscript/fig10.png)
 
 **Figure 10.** Radiation pattern and the magnitude stations. (a) Lower-hemisphere P-wave radiation pattern with the 166 analyst-reviewed stations (grey) and the three first-report stations (red stars, with $|F_P|$); the stars lie adjacent to the P axis. (b) $|F_P|$ and $|F_S|$ versus azimuth; outer ticks are station azimuths, showing the empty 45–180° sector. (c) Distance-corrected observed PGA versus theoretical $|F_S|$, slope $+1.11$ (multivariate $+1.13$). (d) Azimuthal residuals before and after removing the radiation pattern.
 
-For completeness, regressing report-file $Pd$ directly on $|F_P|$ is not significant ($p=0.123$; 1.8% rms improvement), which we attribute to the large scatter of 3 s $Pd$ (rms 0.57 in $\log_{10}$), interpolated take-off angles, and the non-zero amplitudes near nodal planes. The direct statistical evidence for the radiation-pattern control therefore rests on the S-wave/PGA data set, supported by the quantitative agreement in item 3.
-
-### 5.4 Error Budget of the First Alert
-
-Stream `192_gei` provides a clean measurement of what improving the geometry can and cannot buy. Its first solution (3 magnitude stations, 335° gap, 4.6 km location error) reported 6.55; its nineteenth solution (32 magnitude stations, 100° gap, 0.9 km location error) reported 6.27, and its last seven solutions averaged 6.30 with a standard deviation of 0.035. The system converged completely — but to a biased value.
-
-$$\underbrace{5.85}_{\text{analyst } M_L} + \underbrace{0.42}_{\text{$Pd$ relation bias}} + \underbrace{0.28}_{\text{one-sided sampling}} = \underbrace{6.55}_{\text{first solution}}$$
-
 ![Figure 11](../figures/manuscript/fig11.png)
 
 **Figure 11.** Error budget of the first alert. The +0.42 term is independent of station geometry; the +0.28 term is the azimuthal-sampling penalty, quantitatively explained by the radiation pattern (+0.29 predicted).
-
-The +0.42 residual persists at the best geometry the event ever achieved and is therefore a property of the $Pd$ relation for this offshore path, not of the station distribution. Improving the network or waiting for more reports cannot remove it; only calibration can.
-
----
 
 ## 6. Cross-Event Comparison
 
