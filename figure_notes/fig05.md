@@ -8,30 +8,34 @@
 
 ## English
 
-### What the figure shows
+### What is drawn
 
-Four panels against **latency** (seconds after origin). Six streams: geometric-centre (solid) and Geiger (dashed) on computers 192, 230, 231, 236.
+Four panels against **latency** (seconds after origin, ~12–40 s). Six streams: geometric-centre as solid lines with circles, Geiger as dashed lines with triangles. The PNG legend still names host computers; in the paper these are two centroid streams and four Geiger streams.
 
-| Panel | Quantity | What “good” looks like |
+| Panel | Quantity | Reference on the plot |
 | --- | --- | --- |
-| (a) | \(M_{Pd}\) | Approach the dashed reference \(M_L\) 5.85 |
-| (b) | Horizontal error (km) | Fall toward 0 |
-| (c) | Depth (km) | Approach ~13 km |
-| (d) | Station count | Rise as more triggers associate |
+| (a) | \(M_{Pd}\) | dashed line at analyst \(M_L\) 5.85 |
+| (b) | Horizontal epicentral error (km) | zero would be perfect |
+| (c) | Depth (km), **axis inverted** (0 at top) | dashed line at 13.1 km |
+| (d) | Station count \(n\) | rises as triggers associate |
 
 ### How to read it
 
-**(a)** Almost all streams open near **6.5–6.6** (the disseminated first alert). After ~20–30 s they settle at **6.1–6.4**, still above 5.85 — the **biased plateau** of the \(Pd\) relation for this offshore path (the +0.42 term in Fig. 11).
+**(a)** Almost all streams open near **6.5–6.6** — the disseminated first-alert \(M_{Pd}\). After ~20–30 s they settle at **6.1–6.4**, still above 5.85. That late interval is the **biased plateau** of the \(Pd\) relation for this offshore path (the +0.42 term in Fig. 11). Brief dips toward or below 5.85 are the inland-centroid solutions, whose short \(R\) suppresses \(M_{Pd}\) (Fig. 8).
 
-**(b)** Geometric-centre error stays high (~35–45 km). Geiger error drops to a few kilometres; one stream can spike again if association breaks.
+**(b)** Geometric-centre error stays high (~35–45 km). Geiger error drops to a few kilometres near 14–15 s. One Geiger stream can spike again (~50 km near 37 s) if association breaks. Waiting fixes location for Geiger; it does not fix centroid.
 
-**(c)** Depth is **quantised** on 10/20/30 km (and occasional deeper nodes), not a free continuous invert. It does not converge to 13.1 km.
+**(c)** Depth is **quantised** on 10/20/30 km (occasional deeper nodes, one excursion toward 80 km). It does not converge to 13.1 km. The first public product used 30 km.
 
-**(d)** Station count grows; the Geiger stream on computer 192 takes the most stations (~70). More stations improve location (b) more than they remove the magnitude plateau (a).
+**(d)** Station count grows from ~5–10. More stations improve (b) more than they remove the magnitude plateau in (a). One Geiger stream takes the most stations (~70 by ~37 s).
 
 ### Scientific meaning
 
-Waiting for more reports **fixes location** (for Geiger) but **does not remove the offshore magnitude overestimate**. That is why calibration, not only network densification or extra seconds, is required. The first public number is the high early value in (a), not the later plateau.
+Extra seconds **fix Geiger location** but **do not remove the offshore \(M_{Pd}\) overestimate**. Calibration, not only densification or waiting, is required for the +0.42 term. The number the public received is the *early* high value in (a), not the later plateau, because PWS issues once (Fig. 3).
+
+### Common misreading
+
+Do not invert the distance–magnitude coupling: inland mislocation (high error in b) **lowers** \(M_{Pd}\), it does not raise it. The opening 6.5–6.6 values are the *already offshore* Geiger solutions. Also, panel (a) is \(M_{Pd}\) only; this paper does not plot period-based magnitudes.
 
 ---
 
@@ -39,18 +43,29 @@ Waiting for more reports **fixes location** (for Geiger) but **does not remove t
 
 ### 圖面內容
 
-以發震後延遲為橫軸的四聯圖，六條串流（幾何中心實線、Geiger 虛線）。(a) 規模 (b) 水平定位誤差 (c) 深度 (d) 使用站數。
+以發震後延遲為橫軸（約 12–40 秒）的四聯圖。六條串流：幾何中心為帶圓點實線，Geiger 為帶三角虛線。PNG 圖例仍標主機名稱；正文則分為兩條重心串流與四條 Geiger。
+
+| 子圖 | 量 | 圖上參考 |
+| --- | --- | --- |
+| (a) | \(M_{Pd}\) | 虛線為分析師 \(M_L\) 5.85 |
+| (b) | 水平震央誤差（km） | 0 為完美 |
+| (c) | 深度（km），**縱軸反向**（0 在上） | 虛線 13.1 km |
+| (d) | 使用站數 \(n\) | 隨觸發增加 |
 
 ### 如何判讀
 
-**(a)** 幾乎所有串流開頭接近 **6.5–6.6**（首報公眾值），20–30 秒後停在 **6.1–6.4**，仍高於參考 5.85——這就是外海路徑 \(Pd\) 關係的**偏置平台**（圖 11 的 +0.42）。
+**(a)** 幾乎所有串流開頭接近 **6.5–6.6**（首報對外的 \(M_{Pd}\)），20–30 秒後停在 **6.1–6.4**，仍高於 5.85。後期就是這條外海路徑 \(Pd\) 關係的**偏置平台**（圖 11 的 +0.42）。偶爾掉到 5.85 附近或以下的，是內陸重心解，短 \(R\) 把 \(M_{Pd}\) 壓低（圖 8）。
 
-**(b)** 幾何中心誤差維持約 35–45 km；Geiger 可降到數公里，關聯失敗時可能再跳高。
+**(b)** 幾何中心誤差維持約 35–45 km；Geiger 在 14–15 秒可降到數公里。關聯失敗時，有一條 Geiger 會再跳到約 50 km。多等能救 Geiger 定位，救不了重心法。
 
-**(c)** 深度落在 10/20/30 km 等**網格節點**，不會收斂到 13.1 km。
+**(c)** 深度落在 10/20/30 km 等**網格節點**（偶有更深，一次可到約 80 km），不會收到 13.1 km。首報公眾產品用 30 km。
 
-**(d)** 站數隨時間增加。站數變多主要改善 (b) 定位，**消不掉** (a) 的規模平台。
+**(d)** 站數從約 5–10 增加。站數變多主要改善 (b)，**消不掉** (a) 的規模平台。
 
 ### 科學意義
 
-多等幾報能改善 Geiger 定位，但**拿不掉外海規模高估**。所以需要路徑校正，不能只靠加密測站或延長等待。公眾看到的是 (a) 早期高值，不是後來的平台。
+多等幾秒能改善 Geiger 定位，但**拿不掉外海 \(M_{Pd}\) 高估**。+0.42 要靠校正，不能只靠加密測站或延長等待。公眾拿到的是 (a) **早期高值**，不是後來的平台，因為 PWS 只發一次（圖 3）。
+
+### 容易讀錯的地方
+
+不要把距離–規模耦合讀反：陸上錯位（b 誤差大）會**壓低** \(M_{Pd}\)，不會抬高。開頭 6.5–6.6 是**已經放到外海**的 Geiger 解。(a) 只畫 \(M_{Pd}\)；本文不討論週期型規模。
