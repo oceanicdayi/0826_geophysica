@@ -1,0 +1,56 @@
+這份網址指向的是 Springer 旗下期刊（期刊代碼 11600 為 *Acta Geophysica*）的官方投稿須知。由於我無法直接連線抓取當下網頁的最新變動，以下為您整理 **Springer 科學類期刊（含 Acta Geophysica）最核心且通用的投稿規範與準備清單**，幫助您快速核對稿件：
+
+## 1. 基本排版與格式 (General Formatting)
+
+* **檔案格式：** 接受 Word (`.docx`) 或 LaTeX 格式。若使用 LaTeX，需一併上傳原始檔與編譯後的 PDF 檔。
+* **版面設定：** 建議使用標準字體（如 Times New Roman 10pt 或 12pt），**雙倍行距**（Double spacing）。
+* **頁碼與行號：** 必須開啟連續的頁碼（Page numbers）與**連續行號**（Continuous line numbers），以利審查委員標註修改建議。
+* **標題階層：** 最多使用三個層級的標題，請勿過度細分。
+
+## 2. 論文結構 (Manuscript Structure)
+
+稿件通常需要依序包含以下部分：
+
+* **標題頁 (Title Page)：**
+* 論文全名。
+* 所有作者的姓名與所屬機構（Affiliations）。
+* **通訊作者 (Corresponding Author)** 的完整聯絡資訊（包含 Email）。
+
+
+* **摘要 (Abstract)：** 通常限制在 **150 至 250 字**之間。摘要內不可包含參考文獻與未定義的縮寫。
+* **關鍵字 (Keywords)：** 提供 4 到 6 個關鍵字，可用於檢索。
+* **正文 (Main Text)：** 通常包含前言 (Introduction)、方法 (Methods)、結果 (Results)、討論 (Discussion) 與結論 (Conclusions)。
+* **致謝 (Acknowledgments)：** 放在正文之後、參考文獻之前。
+
+## 3. 圖表要求 (Figures and Tables)
+
+* **圖片格式與解析度：**
+* 照片/灰階圖 (Halftones)：最低 **300 dpi**。
+* 線條圖 (Line Art)：最低 **600 dpi**（通常建議 1000-1200 dpi）。
+* 接受的檔案格式通常為 **EPS、TIFF 或高畫質 JPEG**。
+* 所有圖片必須有圖說（Figure legends）。
+
+
+* **表格：** 必須是**可編輯的文字格式**（請勿將表格截圖當作圖片上傳），並附上表頭標題。
+* **擺放位置：** 圖片與表格可直接插入正文中的相應位置，或統一放在手稿的最末端（依系統或期刊偏好，但通常在審查階段放正文中較易讀）。
+
+## 4. 參考文獻 (References)
+
+* **引用格式：** Springer 期刊多半採用**作者-年份制 (Name-Year)** 或 **數字編號制 (Numbered)**。請確保正文內的引用與文末的參考文獻列表完全一致。
+* **DOI：** 只要該參考文獻有 DOI，請務必在結尾附上（例如：`[https://doi.org/](https://doi.org/)...`）。
+* 若使用文獻管理軟體（如 EndNote、Mendeley），建議直接下載 Springer 官方提供的 Style 檔案套用。
+
+## 5. 必填聲明與倫理規範 (Declarations / Back Matter)
+
+Springer 對於學術倫理有嚴格要求，稿件末端（通常在參考文獻前）**必須**包含以下聲明段落。若無相關情況，也必須寫出「Not applicable」：
+
+* **Funding (資金來源)：** 說明本研究獲得的經費補助單位與計畫編號。
+* **Conflicts of interest / Competing interests (利益衝突聲明)：** 聲明作者群是否存在財務或非財務的利益衝突。
+* **Availability of data and material (數據與材料可用性)：** 說明研究所用數據的存放位置與取得方式。
+* **Code availability (代碼可用性)：** 若研究涉及自定義程式碼或軟體，需說明取得方式。
+* **Author contributions (作者貢獻)：** 具體列出每位作者參與了哪一部分的工作（如：概念發想、數據收集、論文撰寫等）。
+
+## 6. 投稿流程 (Submission Process)
+
+* 統一透過 Springer 的線上投稿系統（Editorial Manager）進行。
+* 需準備一封 **Cover Letter（投稿信）**，簡述研究的核心亮點、為何適合該期刊，並聲明此文稿未曾發表且未在其他期刊審查中。
