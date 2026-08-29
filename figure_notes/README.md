@@ -23,6 +23,10 @@ All magnitudes discussed in these notes are the operational \(M_{Pd}\). The pape
 | [fig11.md](fig11.md) | Fig. 11 | First-alert identity: \(5.85+0.42+0.28=6.55\) / 首報帳本 |
 | [fig12.md](fig12.md) | Fig. 12 | Four-event test: offshore overestimate is geometric / 四事件對照：外海高估是幾何 |
 
-**Missing file.** `fig10.png` is cited in the manuscript as `../figures/manuscript/fig10.png` but is not among the PNGs in the repository root (`fig01`–`fig09`, `fig11`, `fig12`). [fig10.md](fig10.md) is reconstructed from the official caption and Section 5.
+**Missing file.** `fig10.png` is cited in the manuscript but is not among the PNGs in the repository root (`fig01`–`fig09`, `fig11`, `fig12`). [fig10.md](fig10.md) is reconstructed from the official caption and Section 5.
 
 **缺檔。** 稿件引用 `fig10.png`，但倉庫根目錄沒有該檔。`fig10.md` 依圖說與第 5 節重建。
+
+How the figures are used in the paper, and what to do next: [../figure_usage_and_next_steps.md](../figure_usage_and_next_steps.md).
+
+圖片在論文中的用法與建議下一步：見 [../figure_usage_and_next_steps.md](../figure_usage_and_next_steps.md)。
