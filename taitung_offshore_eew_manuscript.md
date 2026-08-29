@@ -28,9 +28,9 @@ Earthquake early warning (EEW) exploits the interval between the fast, weak P wa
 
 Taiwan is an instructive laboratory for this problem. The island sits at the convergent boundary between the Eurasian and Philippine Sea plates (Angelier 1986; Kao and Chen 2000); a large share of its felt earthquakes originate offshore in the Ryukyu and Manila subduction systems, whereas the seismic network is necessarily concentrated on land. The Central Weather Administration (CWA) has operated an EEW system for two decades and has published performance milestones mostly for inland shallow events (Wu and Teng 2002; Hsiao et al. 2009, 2011; Chen et al. 2015, 2019). The system in operational use is the earthworm-Based Earthquake Alarm Reporting (eBEAR) system (Chen et al. 2015): it runs several parallel processing streams on the same real-time feed, pairing a geometric-centre location that is immediate and robust against non-convergence with a Geiger inversion that can resolve depth when the station geometry permits (Chen et al. 2019), and it disseminates alerts through cell broadcast, television and a dedicated school channel. Figure 1 makes the resulting geometry explicit for the event analysed here. The 25 August 2026 Taitung earthquake ($M_L$ 5.85) occurred 48 km east-southeast of Taitung City, outside the land network, with its nearest station 14 km away on Green Island and every remaining station in a single sector to the west and northwest. An inland earthquake of the same size would be enveloped by stations, the nearest one about 5 km away.
 
-![Figure 1](../figures/manuscript/fig01.png)
+![Figure 1](fig01.png)
 
-**Figure 1.** CWA real-time seismic network and the 25 August 2026 Taitung offshore earthquake. Grey circles: strong-motion stations; blue triangles: velocity/broadband stations, as configured in the eBEAR instance analysed here (551 and 228 stations respectively within the map area). Red star: the epicentre of the analysed event; the beachball, plotted offset and connected by a line to the epicentre, shows the Real-time Moment Tensor (RMT) focal mechanism used in Section 5 (strike 182°, dip 50°, rake 60°; Lee et al. 2014). Epicentres of the three comparison events of Section 6 are listed in Table 5.
+**Figure 1.** CWA real-time seismic network and the 25 August 2026 Taitung offshore earthquake. Grey circles: strong-motion stations; blue triangles: velocity/broadband stations, as configured in the eBEAR instance analysed here (551 and 228 stations respectively within the map area). Red star: the epicentre of the analysed event; the beachball, plotted offset and connected by a line to the epicentre, shows the Real-time Moment Tensor (RMT) focal mechanism used in Section 5 (strike 182°, dip 50°, rake 60°; Lee et al. 2014).
 
 Most operational EEW magnitudes derive from the amplitude of the first few seconds of the P wave. The peak initial displacement $Pd$, measured over a fixed window of typically 3 s, scales with magnitude and distance and is widely used for real-time magnitude estimation (Wu and Kanamori 2005; Wu and Zhao 2006; Zollo et al. 2006). Three limitations are known: saturation when the window is shorter than the rupture duration (Trugman et al. 2019); strong sensitivity to the assumed hypocentral distance, because the distance-correction term is steep; and station-to-station scatter caused by site response and by the source radiation pattern. The last two interact destructively offshore. The earliest triggering stations occupy a narrow azimuth range, so the magnitude is averaged over a single sector of the focal sphere, while any epicentral error translates directly into a distance error and hence into a magnitude error. Offshore, that error is not random: mislocation is systematically toward the land network, which shortens the assumed distance and therefore lowers the reported magnitude until the location improves. To our knowledge the distance term and the azimuthal-sampling term have not previously been separated and quantified in an operational record.
 
@@ -54,7 +54,7 @@ Alerts are distributed through three independent channels with different thresho
 
 The reference (ground truth) is the CWA analyst-reviewed solution. For the Taitung event this is 2026-08-25 07:00:11.33 UTC, 22.6252°N, 121.5968°E, depth 13.05 km, $M_L$ 5.85, based on 290 phases (azimuthal gap 105°, rms 0.11 s, quality grade B) and matching CWA catalogue report No. 115057. Latency of a solution is its reporting time minus the reference origin time. Alert latency is the `sent` timestamp in the CAP or XML product minus that origin time: the instant the product left the warning system, excluding downstream cell-broadcast delivery, which is not recorded here. All events are measured identically, so cross-event comparisons are internally consistent. Epicentral error is the horizontal distance between the solution and the reference epicentre, and magnitude bias is $\Delta M = M_{Pd} - M_L^{\mathrm{ref}}$. A well-located solution has epicentral error below 10 km; the converged value is the median of the last three well-located solutions; the geometry penalty is the earliest well-located magnitude minus that converged value.
 
-Because each report lists $Pd$, assumed hypocentral distance $R$ and single-station $M_{Pd}$, the operational magnitude is fully specified at station level and can be recovered by least squares over all 2065 single-station records of the event: $M_{Pd} = 4.79 + 1.16\,\log_{10}(Pd) + 1.85\,\log_{10}(R)$, with $Pd$ in cm, $R$ in km and rms 0.13. Predicted and reported values lie on the 1:1 line (Fig. 8d), confirming that reported magnitude is a deterministic function of $Pd$ and assumed distance, not an independent estimate. The coefficient 1.85 on $\log_{10}R$ is steep: a factor-of-two error in assumed distance produces 0.56 magnitude units of error, so any offshore mislocation toward the land network maps directly into a magnitude bias. Event magnitude is the mean of the station values used in each report; therefore two solutions computed from identical $Pd$ amplitudes can differ only through their assumed distances. The recovered relation is used only as a diagnostic description of this operational implementation, not as a proposed new scaling law.
+Because each report lists $Pd$, assumed hypocentral distance $R$ and single-station $M_{Pd}$, the operational magnitude is fully specified at station level and can be recovered by least squares over all 2065 single-station records of the event: $M_{Pd} = 4.79 + 1.16\,\log_{10}(Pd) + 1.85\,\log_{10}(R)$, with $Pd$ in cm, $R$ in km and rms 0.13. Predicted and reported values lie on the 1:1 line (Section 5), confirming that reported magnitude is a deterministic function of $Pd$ and assumed distance, not an independent estimate. The coefficient 1.85 on $\log_{10}R$ is steep: a factor-of-two error in assumed distance produces 0.56 magnitude units of error, so any offshore mislocation toward the land network maps directly into a magnitude bias. Event magnitude is the mean of the station values used in each report; therefore two solutions computed from identical $Pd$ amplitudes can differ only through their assumed distances. The recovered relation is used only as a diagnostic description of this operational implementation, not as a proposed new scaling law.
 
 Far-field P- and S-wave radiation coefficients $F_P$, $F_{SV}$ and $F_{SH}$ are computed from the Real-time Moment Tensor (RMT) focal mechanism (Lee et al. 2014) following Aki and Richards (2002, Box 4.4), with take-off angle measured from the downward vertical. Take-off angles for the 166 analyst-reviewed stations come from the P-file; for report-file stations they are interpolated from the P-file distance–take-off relation. Because observed amplitudes never vanish on nodal planes, $|F|$ is floored at 0.10. We use $|F_S|=\sqrt{F_{SV}^2+F_{SH}^2}$ against PGA and $|F_P|$ against $Pd$. Coefficient uncertainties are estimated by bootstrap resampling (4000 iterations); significance of an azimuthal or radiation term is assessed by permutation (4000 iterations). Azimuthal structure is the amplitude $\sqrt{b^2+c^2}$ of the best-fitting one-cycle harmonic $y=a+b\cos\phi+c\sin\phi$. Four events with complete report archives are compared in Section 6: all metrics are recomputed from the raw report files and each event's own analyst P-file using identical code, so the offshore versus near-coast contrast is not affected by catalogue convention.
 
@@ -64,7 +64,7 @@ Far-field P- and S-wave radiation coefficients $F_P$, $F_{SV}$ and $F_{SH}$ are 
 
 The earthquake occurred at 15:00:11.33 local time (07:00:11.33 UTC) 48 km east-southeast of Taitung City at 13.1 km depth, with $M_L$ 5.85. It is reverse-faulting with a small strike-slip component (strike 182°, dip 50°, rake 60°; Lee et al. 2014), the P axis nearly horizontal at azimuth 293°. The nearest station, on Green Island (LDU, 14.1 km), recorded 150.1 gal and intensity 4, the largest ground motion of the event. Of the 166 analyst-reviewed stations, 6 reached intensity 4, 13 reached intensity 3, and the rest intensity 2 or below. All three channels issued their first message at 07:00:25 UTC, 13.67 s after origin time; the first internal solution was available at 12.52 s. PWS covered 17 counties, television 11, and the school channel 12 at predicted intensity $\geq 3$, with three later updates (Fig. 2, Table 1). Fifteen counties eventually recorded intensity 3 or above, so PWS coverage exceeded the observed footprint: the alert was conservative rather than under-inclusive (Fig. 3).
 
-![Figure 2](../figures/manuscript/fig02.png)
+![Figure 2](fig02.png)
 
 **Figure 2.** PWS coverage of the first alert (17 counties, shaded) with the epicentre (star) and dashed circles showing the S-wave response-time contours at 10 s intervals from the alert instant. The 0 s contour marks the theoretical blind zone boundary.
 
@@ -76,19 +76,19 @@ The earthquake occurred at 15:00:11.33 local time (07:00:11.33 UTC) 48 km east-s
 
 **Table 1.** Dissemination summary. The three channels dispatched simultaneously; the entire alert delay is therefore upstream of the publication pipeline.
 
-![Figure 3](../figures/manuscript/fig03.png)
+![Figure 3](fig03.png)
 
 **Figure 3.** Cumulative number of alerted counties for the three channels compared with the observed cumulative count of counties first exceeding intensity 3 (per-second intensity data). All channels reach their final coverage at 13.7 s, whereas the observed footprint grows until about 65 s. The first county exceeded intensity 3 at about 4 s, before any alert was issued.
 
 Eighty-three solutions were produced by six streams within 40 s. Location convergence was rapid for the Geiger streams and poor for the geometric-centre streams: one Geiger stream was within 4.6 km of the reference in its first solution at 12.5 s, whereas a geometric-centre stream placed the epicentre 35.4 km inland and never recovered (final error 36.1 km). Final errors for the four converging streams were 0.8–1.9 km. Magnitude stabilised at 6.1–6.4 against the reference 5.85; depth remained at the 10/20/30 km grid nodes (Figs. 4, 5). Compared with the 166 analyst-reviewed observations, the first school report ($M$ 6.6 at 30 km) was exact at 10.2% of stations and within $\pm 1$ intensity rank at 59.0%; later reports reached 80.7% within $\pm 1$ (Table 2). First-report residuals are entirely non-negative: no station was under-warned, and most were over-warned by one to two ranks (Fig. 6). Accuracy improved with each update, but the message that reached the public was the least accurate one.
 
-![Figure 4](../figures/manuscript/fig04.png)
+![Figure 4](fig04.png)
 
-**Figure 4.** Epicentre convergence trajectories of the six parallel streams. The reference epicentre is the yellow star. Early geometric-centre solutions lie on land, 35–43 km northwest of the true offshore source.
+**Figure 4.** Epicentre convergence trajectories of the six parallel streams. The reference epicentre is the yellow star. Circles are geometric-centre streams; triangles are Geiger streams. Early geometric-centre solutions lie on land, 35–43 km northwest of the true offshore source.
 
-![Figure 5](../figures/manuscript/fig05.png)
+![Figure 5](fig05.png)
 
-**Figure 5.** Evolution of (a) magnitude, (b) horizontal location error, (c) depth and (d) station count versus latency for the six streams. Magnitude stabilises at 6.1–6.4 against the reference 5.85; depth remains at the 10/20/30 km grid nodes.
+**Figure 5.** Evolution of (a) $M_{Pd}$, (b) horizontal location error, (c) depth and (d) station count versus latency for the six streams. Circles are geometric-centre streams; triangles are Geiger streams. Magnitude stabilises at 6.1–6.4 against the reference 5.85; depth remains at the 10/20/30 km grid nodes except for brief excursions.
 
 | Report | Magnitude / depth | Exact (%) | Within ±1 (%) |
 | --- | --- | ---: | ---: |
@@ -99,15 +99,15 @@ Eighty-three solutions were produced by six streams within 40 s. Location conver
 
 **Table 2.** Intensity prediction accuracy per school-channel report (166 compared stations).
 
-![Figure 6](../figures/manuscript/fig06.png)
+![Figure 6](fig06.png)
 
 **Figure 6.** Intensity residual (predicted minus observed) distributions for the first and second reports. The first report is entirely non-negative.
 
 Using the per-second observed intensity of 626 stations, the first issued solution preceded the S-wave arrival at 99.0% of stations (median lead 33.6 s) and preceded the crossing of intensity 3 at 92.5% of stations that eventually reached intensity 3 (median lead 29.1 s). Taitung City, 48.7 km from the epicentre, had a theoretical lead of only 2.1 s relative to the 13.67 s alert; Green Island and the Taitung coast exceeded intensity 4–5 within 4–13 s, before the alert was issued (Fig. 7). The blind-zone population is small, but the geometry is intrinsic: for an offshore source the closest exposed community is also the least protected. The disseminated solution reported $M_{Pd}$ 6.58, issued to the public as $M$ 6.6. That $M_{Pd}$ overestimate, not a missed warning, is the remaining operational problem, and it is the quantity decomposed in the next two sections.
 
-![Figure 7](../figures/manuscript/fig07.png)
+![Figure 7](fig07.png)
 
-**Figure 7.** Per-second maximum observed intensity by latitude band, with the alert times superimposed. Intensity 5 is reached in the 22.6°N band within about 4 s, well before the first alert at 13.7 s.
+**Figure 7.** Per-second maximum observed intensity by latitude band, with the alert times superimposed. Intensity 4–5 is reached in the 22.6°N band within 4–13 s, before the first alert at 13.7 s.
 
 ---
 
@@ -125,13 +125,13 @@ Reported magnitude tracks assumed distance. At 07:00:23.8 UTC two streams produc
 
 **Table 3.** Identical amplitudes, different assumed distances. The 0.89-unit difference equals $1.85\log_{10}(60/21)=0.84$ predicted by the operational relation.
 
-![Figure 8](../figures/manuscript/fig08.png)
+![Figure 8](fig08.png)
 
 **Figure 8.** Evidence that reported magnitude tracks assumed distance. (a) Two solutions computed in the same second from identical $Pd$ values. (b) Magnitude and location error report by report for a geometric-centre stream. (c) All 83 solutions, $r=-0.74$. (d) Recovered operational relation, 2065 single-station records, rms 0.13.
 
-The first disseminated solution used only three magnitude stations at azimuths 295–307° from the epicentre, a 12° sector. The nearest station, LDU (14.1 km, azimuth 292°), recorded $Pa$ = 162.3 gal but $Pd$ = 0.0006 cm, yielding magnitude 3.46 — an integration or saturation failure at the one station that could have anchored the estimate downward. Among 72 single-station magnitudes of the final well-located solution, estimates vary by 0.3–0.5 units between sectors at the same distance; the west-northwest sector used by the first report ($<$ 60 km) is the highest (median 6.54). Stations beyond 150 km yield 5.4–5.9 but join only after the eleventh report. Azimuthal gap is a weak predictor when the location is correct ($r=0.23$) and only matters at the extreme ($>$ 300°, $n_m\leq4$). Among poorly located solutions the correlation is strong ($r=0.76$) but spurious: the six smallest-gap solutions (125–139°) are the six worst-located (mean 41 km), because an inland epicentre artificially improves apparent coverage (Fig. 9).
+The first disseminated solution used only three magnitude stations at azimuths 295–307° from the epicentre, a 12° sector. The nearest station, LDU (14.1 km, azimuth 292°), recorded $Pa$ = 162.3 gal but $Pd$ = 0.0006 cm, yielding magnitude 3.46 — an integration or saturation failure at the one station that could have anchored the estimate downward. Among 72 single-station magnitudes of the final well-located solution, estimates vary by 0.3–0.5 units between sectors at the same distance; the west-northwest sector used by the first report ($<$ 60 km) is the highest (median 6.54). Stations beyond 150 km yield 5.4–5.9 but join only after the eleventh report (Fig. 9). Azimuthal gap is a weak predictor when the location is correct ($r=0.23$) and only matters at the extreme ($>$ 300°, $n_m\leq4$). Among poorly located solutions the correlation is strong ($r=0.76$) but spurious: the six smallest-gap solutions (125–139°) are the six worst-located (mean 41 km), because an inland epicentre artificially improves apparent coverage.
 
-![Figure 9](../figures/manuscript/fig09.png)
+![Figure 9](fig09.png)
 
 **Figure 9.** Azimuthal evidence. (a) Station azimuth coverage: no station exists between 45° and 180°; red lines mark the three stations that set the first magnitude. (b) Median single-station magnitude by azimuth sector and distance band. (c) Azimuth versus single-station magnitude residual for the final solution. (d) Direction of the strongest distance-corrected observed PGA per distance band.
 
@@ -148,11 +148,11 @@ The RMT mechanism (Lee et al. 2014) places the P axis (azimuth 293°, plunge 1°
 
 **Table 4.** The three stations that set the first magnitude sat on the maximum lobe of the P-wave radiation pattern. The ratio 0.699/0.392 = 1.78 predicts a magnitude bias of $1.16\log_{10}(1.78)=+0.29$.
 
-![Figure 10](../figures/manuscript/fig10.png)
+![Figure 10](fig10.png)
 
 **Figure 10.** Radiation pattern and the magnitude stations. (a) Lower-hemisphere P-wave radiation pattern with the 166 analyst-reviewed stations (grey) and the three first-report stations (red stars, with $|F_P|$); the stars lie adjacent to the P axis. (b) $|F_P|$ and $|F_S|$ versus azimuth; outer ticks are station azimuths, showing the empty 45–180° sector. (c) Distance-corrected observed PGA versus theoretical $|F_S|$, slope $+1.11$ (multivariate $+1.13$). (d) Azimuthal residuals before and after removing the radiation pattern.
 
-![Figure 11](../figures/manuscript/fig11.png)
+![Figure 11](fig11.png)
 
 **Figure 11.** Error budget of the first alert. The +0.42 term is independent of station geometry; the +0.28 term is the azimuthal-sampling penalty, quantitatively explained by the radiation pattern (+0.29 predicted).
 
@@ -181,7 +181,7 @@ To test whether the offshore bias is event-specific, we recomputed all metrics f
 
 Three patterns emerge (Fig. 12). The magnitude bias is a property of offshore geometry, not of the system. Both offshore events over-estimate among well-located solutions ($+0.38\pm0.17$ and $+0.45\pm0.14$); both near-coast events, whose nearest station is about 5 km away, are unbiased ($-0.08\pm0.17$ and $-0.07\pm0.16$). The discriminating variable is the distance to the nearest station, that is, whether the source lies inside or outside the network (Fig. 12a). Yilan is deep and larger than Taitung, yet the over-estimate has the same sign. The mislocation–magnitude compensation is likewise specific to offshore sources. Only Taitung and Yilan show negative correlation between epicentral error and reported magnitude ($r=-0.74$ and $-0.55$), because their mislocations are systematically directed toward the network. The two Hualien events, whose mislocations are unsystematic, show weak positive correlations ($r=+0.23$ and $+0.46$; Fig. 12c). First-report intensity within $\pm1$ is 59.0% for Taitung against 88.1, 92.6 and 92.4% for the other three events, consistent with the larger first-alert over-estimate of the Taitung case.
 
-![Figure 12](../figures/manuscript/fig12.png)
+![Figure 12](fig12.png)
 
 **Figure 12.** Cross-event comparison. (a) Magnitude bias of well-located solutions versus the distance to the nearest station. (b) First internal solution and first public alert latency. (c) Correlation between epicentral error and reported magnitude. (d) Magnitude bias versus latency for well-located solutions only.
 
