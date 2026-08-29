@@ -1,6 +1,6 @@
 # Figure 10. Radiation pattern and PGA (no residual directivity)
 
-- **Image:** cited as `../figures/manuscript/fig10.png` — **not present** among PNG files in the repository root (`fig01`–`fig09`, `fig11`, `fig12` only)
+- **Image:** cited as `fig10.png` — **not present** among PNG files in the repository root (`fig01`–`fig09`, `fig11`, `fig12` only)
 - **Section:** 5
 - **Official caption:** Radiation pattern and the magnitude stations. (a) Lower-hemisphere P-wave radiation pattern with the 166 analyst-reviewed stations (grey) and the three first-report stations (red stars, with \(|F_P|\)); the stars lie adjacent to the P axis. (b) \(|F_P|\) and \(|F_S|\) versus azimuth; outer ticks are station azimuths, showing the empty 45–180° sector. (c) Distance-corrected observed PGA versus theoretical \(|F_S|\), slope \(+1.11\) (multivariate \(+1.13\)). (d) Azimuthal residuals before and after removing the radiation pattern.
 
